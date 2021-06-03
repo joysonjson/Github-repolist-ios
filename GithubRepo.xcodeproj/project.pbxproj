@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		088ADD9B2668C66C008A8C84 /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */; };
+		088ADDA42668CD28008A8C84 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDA32668CD28008A8C84 /* RepoViewModel.swift */; };
+		088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDAC2668CD78008A8C84 /* Repository.swift */; };
+		088ADDB62668F61A008A8C84 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDB52668F619008A8C84 /* ErrorMessage.swift */; };
+		088ADDBB2668FD83008A8C84 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDBA2668FD83008A8C84 /* NetworkSession.swift */; };
+		088ADDC12668FF63008A8C84 /* NetworkLogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDC02668FF63008A8C84 /* NetworkLogLevel.swift */; };
+		088ADDC92668FF8B008A8C84 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDC82668FF8B008A8C84 /* NetworkLogger.swift */; };
+		088ADDCE26690946008A8C84 /* HttpCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDCD26690946008A8C84 /* HttpCreateRequest.swift */; };
+		088ADDD32669096F008A8C84 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDD22669096F008A8C84 /* HTTPMethod.swift */; };
 		088E43552668B1CB00877C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43542668B1CB00877C58 /* AppDelegate.swift */; };
 		088E43572668B1CB00877C58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43562668B1CB00877C58 /* SceneDelegate.swift */; };
 		088E43592668B1CB00877C58 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43582668B1CB00877C58 /* ViewController.swift */; };
@@ -44,6 +52,14 @@
 
 /* Begin PBXFileReference section */
 		088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
+		088ADDA32668CD28008A8C84 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
+		088ADDAC2668CD78008A8C84 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		088ADDB52668F619008A8C84 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		088ADDBA2668FD83008A8C84 /* NetworkSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		088ADDC02668FF63008A8C84 /* NetworkLogLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogLevel.swift; sourceTree = "<group>"; };
+		088ADDC82668FF8B008A8C84 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		088ADDCD26690946008A8C84 /* HttpCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpCreateRequest.swift; sourceTree = "<group>"; };
+		088ADDD22669096F008A8C84 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		088E43512668B1CB00877C58 /* GithubRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		088E43542668B1CB00877C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		088E43562668B1CB00877C58 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +108,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		088ADDA22668CCE9008A8C84 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				088ADDA32668CD28008A8C84 /* RepoViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		088ADDAB2668CD4A008A8C84 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				088ADDAC2668CD78008A8C84 /* Repository.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		088ADDBF2668FF33008A8C84 /* logger */ = {
+			isa = PBXGroup;
+			children = (
+				088ADDC02668FF63008A8C84 /* NetworkLogLevel.swift */,
+				088ADDC82668FF8B008A8C84 /* NetworkLogger.swift */,
+			);
+			path = logger;
+			sourceTree = "<group>";
+		};
 		088E43482668B1CB00877C58 = {
 			isa = PBXGroup;
 			children = (
@@ -115,9 +156,11 @@
 		088E43532668B1CB00877C58 /* GithubRepo */ = {
 			isa = PBXGroup;
 			children = (
-				088E43542668B1CB00877C58 /* AppDelegate.swift */,
-				088E43A52668BB2E00877C58 /* Utility */,
 				088E43562668B1CB00877C58 /* SceneDelegate.swift */,
+				088E43542668B1CB00877C58 /* AppDelegate.swift */,
+				088ADDAB2668CD4A008A8C84 /* Model */,
+				088ADDA22668CCE9008A8C84 /* ViewModel */,
+				088E43A52668BB2E00877C58 /* Utility */,
 				088E43CB2668BFF700877C58 /* network */,
 				088E43D42668C0CD00877C58 /* ViewControllers */,
 				088E435A2668B1CB00877C58 /* Main.storyboard */,
@@ -155,6 +198,7 @@
 				088E43C12668BEB600877C58 /* Constant.swift */,
 				088E43C62668BF4F00877C58 /* EndPoints.swift */,
 				088E43BC2668BE6600877C58 /* ValidationResult.swift */,
+				088ADDB52668F619008A8C84 /* ErrorMessage.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -162,7 +206,11 @@
 		088E43CB2668BFF700877C58 /* network */ = {
 			isa = PBXGroup;
 			children = (
+				088ADDBF2668FF33008A8C84 /* logger */,
 				088E43CC2668C00F00877C58 /* HttpRequest.swift */,
+				088ADDCD26690946008A8C84 /* HttpCreateRequest.swift */,
+				088ADDD22669096F008A8C84 /* HTTPMethod.swift */,
+				088ADDBA2668FD83008A8C84 /* NetworkSession.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -306,16 +354,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				088ADDD32669096F008A8C84 /* HTTPMethod.swift in Sources */,
+				088ADDA42668CD28008A8C84 /* RepoViewModel.swift in Sources */,
 				088ADD9B2668C66C008A8C84 /* RepoListViewController.swift in Sources */,
 				088E43592668B1CB00877C58 /* ViewController.swift in Sources */,
+				088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */,
+				088ADDC12668FF63008A8C84 /* NetworkLogLevel.swift in Sources */,
+				088ADDCE26690946008A8C84 /* HttpCreateRequest.swift in Sources */,
 				088E43CD2668C00F00877C58 /* HttpRequest.swift in Sources */,
 				088E43C72668BF4F00877C58 /* EndPoints.swift in Sources */,
+				088ADDBB2668FD83008A8C84 /* NetworkSession.swift in Sources */,
 				088E43552668B1CB00877C58 /* AppDelegate.swift in Sources */,
 				088E43572668B1CB00877C58 /* SceneDelegate.swift in Sources */,
+				088ADDB62668F61A008A8C84 /* ErrorMessage.swift in Sources */,
 				088E43C22668BEB600877C58 /* Constant.swift in Sources */,
 				088E43B02668BD8B00877C58 /* Enum.swift in Sources */,
 				088E43BD2668BE6600877C58 /* ValidationResult.swift in Sources */,
 				088E43B82668BE2000877C58 /* Validation.swift in Sources */,
+				088ADDC92668FF8B008A8C84 /* NetworkLogger.swift in Sources */,
 				088E43A72668BB4000877C58 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

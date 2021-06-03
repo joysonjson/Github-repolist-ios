@@ -9,10 +9,11 @@ import UIKit
 
 class RepoListViewController: UIViewController {
     var selectedLanguage: String = ""
-    
+    let vm = RepoViewModel()
+    var data: [Repository] = []
     init?(coder: NSCoder, selectedLanguage: String) {
-        self.selectedLanguage = selectedLanguage
         super.init(coder: coder)
+        self.selectedLanguage = selectedLanguage
     }
     
     required init?(coder: NSCoder) {
@@ -22,7 +23,21 @@ class RepoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        getData()
+//        self.startConnection()
     }
+    private func getData(){
+        vm.getRepositories(langauge: self.selectedLanguage) { (res) in
+            switch res {
+            case .success(let results):
+                self.data = results
+            case .failure(let error):
+                self.presentAlertWithTitle(title: "Alert", message: error.rawValue, options: [.ok]) { (_) in
+                }
+            }
+
+        }
+        
+    }
+    
 }

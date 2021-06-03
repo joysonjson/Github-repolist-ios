@@ -7,5 +7,7 @@
 
 import Foundation
 struct EndPoints {
-    public static let searchRepositories = "/search/repositories"
+    public static let baseUrl = "https://api.github.com/"
+    public static let searchRepositories = "search/repositories"
+
 }

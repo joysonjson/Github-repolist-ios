@@ -19,15 +19,7 @@ extension UIViewController {
         view.endEditing(true)
 
     }
-    private var mainStoryBoard:UIStoryboard {
-        return UIStoryboard.init(name: "Main", bundle: Bundle.main)
-    }
-    func getViewController<T:UIViewController> (with title:String = "") -> T {
-        let string = String.init(describing: T.self)
-        let myViewController = self.mainStoryBoard.instantiateViewController(withIdentifier: string)
-        myViewController.title = title
-        return myViewController as! T
-    }
+
     func push(viewController:UIViewController) {
         guard let navigation = self.navigationController else {
             return
@@ -45,5 +37,42 @@ extension UIViewController {
             self.present(alertController, animated: true, completion: nil)
 
         }
+    }
+}
+
+extension URLRequest{
+    mutating func addBody(param:[String:Any]?){
+        let requestData = try? JSONSerialization.data(withJSONObject: param, options: [])
+        self.httpBody = requestData
+    }
+
+    mutating func addBody(formdata:[String:Any]?){
+        guard let data = formdata else { return  }
+        let jsonString = data.reduce("") { "\($0)\($1.0)=\($1.1)&" }
+        self.httpBody = jsonString.data(using: .utf8, allowLossyConversion: false)!
+    }
+    
+}
+
+
+public extension URL {
+    func queryItems(_ key: String, value: String?) -> URL {
+        
+        guard var urlComponents = URLComponents(string: absoluteString) else { return absoluteURL }
+        
+        // Create array of existing query items
+        var queryItems: [URLQueryItem] = urlComponents.queryItems ??  []
+        
+        // Create query item
+        let queryItem = URLQueryItem(name: key, value: value)
+        
+        // Append the new query item in the existing query items array
+        queryItems.append(queryItem)
+        
+        // Append updated query items array in the url component object
+        urlComponents.queryItems = queryItems
+        
+        // Returns the url from new url components
+        return urlComponents.url!
     }
 }
