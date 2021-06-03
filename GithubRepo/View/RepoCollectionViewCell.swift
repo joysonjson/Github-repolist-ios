@@ -10,7 +10,7 @@ import UIKit
 
 class RepoCollectionViewCell: UICollectionViewCell {
 
-    private let profileImage : RoundedImageView = {
+    let profileImage : RoundedImageView = {
         let image = RoundedImageView()
         return image
     }()

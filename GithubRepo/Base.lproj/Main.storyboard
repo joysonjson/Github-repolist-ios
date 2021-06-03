@@ -118,28 +118,32 @@
             </objects>
             <point key="canvasLocation" x="1776" y="69"/>
         </scene>
-        <!--View Controller-->
+        <!--Repo Details View Controller-->
         <scene sceneID="8XG-y3-QVK">
             <objects>
-                <viewController id="J3z-Zb-1eQ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RepoDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J3z-Zb-1eQ" customClass="RepoDetailsViewController" customModule="GithubRepo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z2v-2Z-csu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="qpl-uV-6iW">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="blY-ex-Qmr" customClass="CahcedImage" customModule="GithubRepo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="221"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="blY-ex-Qmr" secondAttribute="height" multiplier="15:8" id="SuK-0X-5VC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dbo-yC-7jE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Dbo-yC-7jE" firstAttribute="bottom" secondItem="qpl-uV-6iW" secondAttribute="bottom" id="2Lc-OY-ip5"/>
-                            <constraint firstItem="Dbo-yC-7jE" firstAttribute="trailing" secondItem="qpl-uV-6iW" secondAttribute="trailing" id="RUT-W5-q8C"/>
-                            <constraint firstItem="qpl-uV-6iW" firstAttribute="leading" secondItem="Dbo-yC-7jE" secondAttribute="leading" id="RaD-8Y-X2f"/>
-                            <constraint firstItem="qpl-uV-6iW" firstAttribute="top" secondItem="Dbo-yC-7jE" secondAttribute="top" id="obk-J4-SDN"/>
+                            <constraint firstItem="blY-ex-Qmr" firstAttribute="leading" secondItem="Dbo-yC-7jE" secondAttribute="leading" id="3Dt-bb-d5n"/>
+                            <constraint firstItem="blY-ex-Qmr" firstAttribute="top" secondItem="Dbo-yC-7jE" secondAttribute="top" id="7DM-IA-ayX"/>
+                            <constraint firstItem="Dbo-yC-7jE" firstAttribute="trailing" secondItem="blY-ex-Qmr" secondAttribute="trailing" id="eTg-6s-5eb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="blY-ex-Qmr" id="Zdj-9v-XP1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zpk-n7-9cT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

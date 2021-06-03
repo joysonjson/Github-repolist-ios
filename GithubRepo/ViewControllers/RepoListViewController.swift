@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Hero
 
 class RepoListViewController: UIViewController {
     var selectedLanguage: String = ""
@@ -27,6 +28,12 @@ class RepoListViewController: UIViewController {
         super.viewDidLoad()
         self.setUp()
         getData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        enableHero()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        disableHero()
     }
     private func setUp(){
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -58,6 +65,17 @@ class RepoListViewController: UIViewController {
     
 }
 extension RepoListViewController:UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! RepoCollectionViewCell
+        cell.profileImage.heroID = String(describing: indexPath.row)
+        guard let vc = storyboard?.instantiateViewController(identifier: String(describing: RepoDetailsViewController.self), creator: { coder in
+            return RepoDetailsViewController(coder: coder, repository: self.data[indexPath.row], idSelcted: indexPath.row)
+          }) else {
+              fatalError("Failed to load RepoListViewController from storyboard.")
+          }
+
+        self.showHero(vc, navigationAnimationType: .selectBy(presenting:.zoom, dismissing:.zoomOut))
+    }
     
 }
 extension RepoListViewController: UICollectionViewDataSource{

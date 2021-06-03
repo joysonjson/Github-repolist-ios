@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,6 +36,9 @@
 		088E43C22668BEB600877C58 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43C12668BEB600877C58 /* Constant.swift */; };
 		088E43C72668BF4F00877C58 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43C62668BF4F00877C58 /* EndPoints.swift */; };
 		088E43CD2668C00F00877C58 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43CC2668C00F00877C58 /* HttpRequest.swift */; };
+		08BF7B1726695C6800D4285E /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B1626695C6800D4285E /* Hero */; };
+		08BF7B1826695C6800D4285E /* Hero in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B1626695C6800D4285E /* Hero */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,20 @@
 			remoteInfo = GithubRepo;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		08BF7B1926695C6900D4285E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				08BF7B1826695C6800D4285E /* Hero in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +108,7 @@
 		088E43C12668BEB600877C58 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		088E43C62668BF4F00877C58 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		088E43CC2668C00F00877C58 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08BF7B1726695C6800D4285E /* Hero in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +270,7 @@
 			children = (
 				088E43582668B1CB00877C58 /* ViewController.swift */,
 				088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */,
+				08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -265,12 +285,16 @@
 				088E434D2668B1CB00877C58 /* Sources */,
 				088E434E2668B1CB00877C58 /* Frameworks */,
 				088E434F2668B1CB00877C58 /* Resources */,
+				08BF7B1926695C6900D4285E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = GithubRepo;
+			packageProductDependencies = (
+				08BF7B1626695C6800D4285E /* Hero */,
+			);
 			productName = GithubRepo;
 			productReference = 088E43512668B1CB00877C58 /* GithubRepo.app */;
 			productType = "com.apple.product-type.application";
@@ -342,6 +366,9 @@
 				Base,
 			);
 			mainGroup = 088E43482668B1CB00877C58;
+			packageReferences = (
+				08BF7B1526695C6800D4285E /* XCRemoteSwiftPackageReference "Hero" */,
+			);
 			productRefGroup = 088E43522668B1CB00877C58 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -400,6 +427,7 @@
 				088ADDB62668F61A008A8C84 /* ErrorMessage.swift in Sources */,
 				088E43C22668BEB600877C58 /* Constant.swift in Sources */,
 				088ADDF526694BD5008A8C84 /* Label.swift in Sources */,
+				08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */,
 				088ADDE826692820008A8C84 /* RoundImage.swift in Sources */,
 				088ADDF026692A24008A8C84 /* ImageLoader.swift in Sources */,
 				088E43B02668BD8B00877C58 /* Enum.swift in Sources */,
@@ -735,6 +763,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		08BF7B1526695C6800D4285E /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		08BF7B1626695C6800D4285E /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08BF7B1526695C6800D4285E /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 088E43492668B1CB00877C58 /* Project object */;
 }
