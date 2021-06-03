@@ -76,3 +76,60 @@ public extension URL {
         return urlComponents.url!
     }
 }
+
+extension UICollectionViewCell {
+    func shadowDecorate() {
+        let radius: CGFloat = 10
+        contentView.layer.cornerRadius = radius
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.clear.cgColor
+        contentView.layer.masksToBounds = true
+    
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        layer.shadowRadius = 2.0
+        layer.shadowOpacity = 0.5
+        layer.masksToBounds = false
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: radius).cgPath
+        layer.cornerRadius = radius
+    }
+}
+
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
+}
+
+
+public enum fontSize: CGFloat  {
+    case small =  12
+    case reqular = 14
+    case medium = 16
+    case large = 18
+    case largest = 20
+}
+
+
+public extension UIDevice {
+    class var isPhone: Bool {
+        return UIDevice.current.userInterfaceIdiom == .phone
+    }
+    
+    class var isPad: Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
+}
+
+
+public extension UIFont {
+    static func setFont(_ weight: UIFont.Weight = .regular, size: CGFloat = 14) -> UIFont {
+        if UIDevice.isPad{
+            return .systemFont(ofSize: size * 1.4 , weight: weight)
+        }
+        return .systemFont(ofSize: size, weight: weight)
+    }
+}

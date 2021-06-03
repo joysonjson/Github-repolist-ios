@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        guard let vc = storyboard?.instantiateViewController(identifier: "RepoListViewController", creator: { coder in
+        guard let vc = storyboard?.instantiateViewController(identifier: String(describing: RepoListViewController.self), creator: { coder in
             return RepoListViewController(coder: coder, selectedLanguage: "swift")
           }) else {
               fatalError("Failed to load RepoListViewController from storyboard.")
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     @IBAction func searchAction(_ sender: UIButton) {
         let validation = ProgrammingLanguageValidation().Validate(langauge: self.programNameTextField.text)
         if validation.success{
-            guard let vc = storyboard?.instantiateViewController(identifier: "RepoListViewController", creator: { coder in
+            guard let vc = storyboard?.instantiateViewController(identifier:  String(describing: RepoListViewController.self), creator: { coder in
                 return RepoListViewController(coder: coder, selectedLanguage: validation.value!)
               }) else {
                   fatalError("Failed to load RepoListViewController from storyboard.")

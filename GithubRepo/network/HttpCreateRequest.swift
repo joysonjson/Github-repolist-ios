@@ -22,7 +22,7 @@ struct HttpCreateRequest {
      - Parameter contentType: String, eg: "applicaction/json"
      - Returns: URLRequest , with configured URL, header and query params
      */
-    internal func createRequest(httpMethod:HTTPMethod,url:URL,queryParams: [String:String],headers:[String:String],contentType:String = "application/json") ->URLRequest{
+    internal func createRequest(httpMethod:HTTPMethod,url:URL,queryParams: [String:String] = [:],headers:[String:String] = [:],contentType:String = "application/json") ->URLRequest{
         var request:URLRequest!
         var components = URLComponents(string: url.absoluteString)
         
