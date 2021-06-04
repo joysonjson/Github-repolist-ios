@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 var imageCache = NSCache<NSString, AnyObject>()
 
-class CahcedImage: UIImageView {
+class CachedImageView: UIImageView {
 
     // MARK: - Constants
 
@@ -21,7 +21,6 @@ class CahcedImage: UIImageView {
     func downloadImageFrom(urlString: String, imageMode: UIView.ContentMode) {
         guard let url = URL(string: urlString) else { return }
         downloadImageFrom(url: url, imageMode: imageMode)
-        imageCache.totalCostLimit = 80
            
     }
     

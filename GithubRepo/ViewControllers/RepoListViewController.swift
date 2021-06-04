@@ -97,7 +97,7 @@ extension RepoListViewController: UICollectionViewDataSource{
         }
     }
     override func didReceiveMemoryWarning() {
-        imageCache = NSCache<NSString, AnyObject>()
+        imageCache.removeAllObjects()
     }
     
 }

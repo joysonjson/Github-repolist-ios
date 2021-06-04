@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyq-Qg-bm2">
-                                <rect key="frame" x="138.5" y="423" width="137" height="50"/>
+                                <rect key="frame" x="138.5" y="787" width="137" height="50"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cMV-A4-3aq"/>
@@ -55,8 +55,8 @@
                             <constraint firstItem="6mY-yX-wv2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="D89-EE-74Y"/>
                             <constraint firstItem="cyq-Qg-bm2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DPc-zQ-Qfm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WRg-6O-deo" secondAttribute="trailing" constant="80" id="aqX-pr-Hdq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cyq-Qg-bm2" secondAttribute="bottom" constant="25" id="rAB-jD-RhN"/>
                             <constraint firstItem="WRg-6O-deo" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="uJr-c9-01O"/>
-                            <constraint firstItem="cyq-Qg-bm2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="yoQ-2k-sNN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fBh-Lc-cPo"/>

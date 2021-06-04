@@ -12,7 +12,7 @@ import Foundation
 struct HttpRequest{
     let service = NetworkSession()
     let createRequest = HttpCreateRequest()
-    public typealias queryParams = [String:String]
+    public typealias queryParams = [String:Any]
 
     /**
      GET Api call

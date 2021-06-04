@@ -18,7 +18,6 @@ struct Repository: Decodable {
     let owner:Contributer?
     let description:String?
     let url:URL?
-    
     let collaborators_url:String?
     let teams_url:URL?
     let contributors_url:URL?

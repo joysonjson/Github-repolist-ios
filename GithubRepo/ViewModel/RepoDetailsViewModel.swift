@@ -24,4 +24,52 @@ struct RepoDetailsViewModel {
         }
         
     }
+    func getDetailsData(contributeUrl: String?,issueUrl: String?,commentsUrl:String?, completion: @escaping(Bool,[Contributer],[Issue],[Comment])-> Void){
+        
+        guard let contributerUrl = URL(string:  contributeUrl ?? ""), let issueUrl = URL(string: issueUrl?.correctUrl() ?? ""), let commentsUrl = URL(string: commentsUrl?.correctUrl() ?? "") else {
+            return
+        }
+        let group = DispatchGroup()
+        var contributors:[Contributer] = []
+        var comments:[Comment] = []
+        var issues:[Issue] = []
+        
+        let qPrams:[String:Any] = ["per_page":3]
+
+        let httpUtility = HttpRequest()
+        group.enter()
+        
+        httpUtility.getApiData(requestUrl: contributerUrl,resultType: [Contributer].self,queryParams: qPrams) { (res) in
+            contributors = res ?? []
+            group.leave()
+            
+        } andFailure: { (error) in
+            group.leave()
+        }
+        group.enter()
+
+        httpUtility.getApiData(requestUrl: issueUrl,resultType: [Issue].self,queryParams: qPrams) { (res) in
+            issues = res ?? []
+            group.leave()
+            
+            
+        } andFailure: { (error) in
+            group.leave()
+        }
+        group.enter()
+
+        httpUtility.getApiData(requestUrl: commentsUrl,resultType: [Comment].self,queryParams: qPrams) { (res) in
+            comments = res ?? []
+            group.leave()
+            
+        } andFailure: { (error) in
+            group.leave()
+        }
+        group.notify(queue: .main){
+            print("Finished")
+            completion(true,contributors,issues,comments)
+        }
+        
+        
+    }
 }

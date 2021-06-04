@@ -42,7 +42,7 @@ class RepoCollectionViewCell: UICollectionViewCell {
         profileImage.anchor(top: self.contentView.topAnchor, leading: self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0), size: CGSize(width: 80, height: 80))
         titleLabel.anchor(top: profileImage.bottomAnchor, leading:  self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0),size: CGSize(width: self.frame.width - 15, height: 40))
 
-        descriptionLabel.anchor(top: self.titleLabel.bottomAnchor, leading: self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 3, left: 15, bottom: 5, right: 0))
+        descriptionLabel.anchor(top: self.titleLabel.bottomAnchor, leading: self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 3, left: 15, bottom: 5, right: 5))
         descriptionLabel.preferredMaxLayoutWidth = self.frame.size.width
         self.contentView.backgroundColor = .systemBackground
       

@@ -40,6 +40,10 @@
 		08BF7B1826695C6800D4285E /* Hero in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B1626695C6800D4285E /* Hero */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */; };
 		08BF7B2226696CE200D4285E /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B2126696CE200D4285E /* RepoDetailsViewModel.swift */; };
+		08BF7B2C266A160400D4285E /* ComplexGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B2B266A160400D4285E /* ComplexGrid.swift */; };
+		08BF7B30266A19AC00D4285E /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B2F266A19AC00D4285E /* HeaderCollectionView.swift */; };
+		08BF7B34266A661900D4285E /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B33266A661900D4285E /* Comments.swift */; };
+		08BF7B38266A662600D4285E /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B37266A662600D4285E /* Issue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +115,10 @@
 		088E43CC2668C00F00877C58 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		08BF7B2126696CE200D4285E /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
+		08BF7B2B266A160400D4285E /* ComplexGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexGrid.swift; sourceTree = "<group>"; };
+		08BF7B2F266A19AC00D4285E /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
+		08BF7B33266A661900D4285E /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		08BF7B37266A662600D4285E /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				088ADDAC2668CD78008A8C84 /* Repository.swift */,
+				08BF7B33266A661900D4285E /* Comments.swift */,
+				08BF7B37266A662600D4285E /* Issue.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				088ADDD9266920BD008A8C84 /* RepoCollectionViewCell.swift */,
+				08BF7B2F266A19AC00D4285E /* HeaderCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,6 +285,7 @@
 				088E43582668B1CB00877C58 /* ViewController.swift */,
 				088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */,
 				08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */,
+				08BF7B2B266A160400D4285E /* ComplexGrid.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -419,6 +431,8 @@
 				088ADDA42668CD28008A8C84 /* RepoViewModel.swift in Sources */,
 				088ADD9B2668C66C008A8C84 /* RepoListViewController.swift in Sources */,
 				08BF7B2226696CE200D4285E /* RepoDetailsViewModel.swift in Sources */,
+				08BF7B2C266A160400D4285E /* ComplexGrid.swift in Sources */,
+				08BF7B38266A662600D4285E /* Issue.swift in Sources */,
 				088E43592668B1CB00877C58 /* ViewController.swift in Sources */,
 				088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */,
 				088ADDC12668FF63008A8C84 /* NetworkLogLevel.swift in Sources */,
@@ -431,12 +445,14 @@
 				088ADDB62668F61A008A8C84 /* ErrorMessage.swift in Sources */,
 				088E43C22668BEB600877C58 /* Constant.swift in Sources */,
 				088ADDF526694BD5008A8C84 /* Label.swift in Sources */,
+				08BF7B30266A19AC00D4285E /* HeaderCollectionView.swift in Sources */,
 				08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */,
 				088ADDE826692820008A8C84 /* RoundImage.swift in Sources */,
 				088ADDF026692A24008A8C84 /* ImageLoader.swift in Sources */,
 				088E43B02668BD8B00877C58 /* Enum.swift in Sources */,
 				088E43BD2668BE6600877C58 /* ValidationResult.swift in Sources */,
 				088ADDDA266920BD008A8C84 /* RepoCollectionViewCell.swift in Sources */,
+				08BF7B34266A661900D4285E /* Comments.swift in Sources */,
 				088E43B82668BE2000877C58 /* Validation.swift in Sources */,
 				088ADDC92668FF8B008A8C84 /* NetworkLogger.swift in Sources */,
 				088E43A72668BB4000877C58 /* Extension.swift in Sources */,

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class RoundedImageView: CahcedImage {
+class RoundedImageView: CachedImageView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
