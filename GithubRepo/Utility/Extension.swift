@@ -131,6 +131,7 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+  
 }
 
 
@@ -160,5 +161,17 @@ public extension UIFont {
             return .systemFont(ofSize: size * 1.4 , weight: weight)
         }
         return .systemFont(ofSize: size, weight: weight)
+    }
+}
+
+public extension String{
+    func getDate() -> String {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:SSZ"
+//        2021-06-03T18:45:25Z
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd yyyy h:mm a"  //"MMM d, h:mm a" for  Sep 12, 2:11 PM
+        guard let date = dateFormatterGet.date(from: self) else {return ""}
+        return dateFormatterPrint.string(from: date)
     }
 }

@@ -39,6 +39,7 @@
 		08BF7B1726695C6800D4285E /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B1626695C6800D4285E /* Hero */; };
 		08BF7B1826695C6800D4285E /* Hero in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B1626695C6800D4285E /* Hero */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */; };
+		08BF7B2226696CE200D4285E /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B2126696CE200D4285E /* RepoDetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		088E43C62668BF4F00877C58 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		088E43CC2668C00F00877C58 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
+		08BF7B2126696CE200D4285E /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				088ADDA32668CD28008A8C84 /* RepoViewModel.swift */,
+				08BF7B2126696CE200D4285E /* RepoDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				088ADDD32669096F008A8C84 /* HTTPMethod.swift in Sources */,
 				088ADDA42668CD28008A8C84 /* RepoViewModel.swift in Sources */,
 				088ADD9B2668C66C008A8C84 /* RepoListViewController.swift in Sources */,
+				08BF7B2226696CE200D4285E /* RepoDetailsViewModel.swift in Sources */,
 				088E43592668B1CB00877C58 /* ViewController.swift in Sources */,
 				088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */,
 				088ADDC12668FF63008A8C84 /* NetworkLogLevel.swift in Sources */,

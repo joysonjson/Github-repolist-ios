@@ -96,5 +96,8 @@ extension RepoListViewController: UICollectionViewDataSource{
             self.navigationController?.navigationBar.barTintColor = .clear
         }
     }
+    override func didReceiveMemoryWarning() {
+        imageCache = NSCache<NSString, AnyObject>()
+    }
     
 }

@@ -7,12 +7,12 @@
 
 import Foundation
 import UIKit
+var imageCache = NSCache<NSString, AnyObject>()
 
 class CahcedImage: UIImageView {
 
     // MARK: - Constants
 
-    let imageCache = NSCache<NSString, AnyObject>()
 
     // MARK: - Properties
 
@@ -21,7 +21,10 @@ class CahcedImage: UIImageView {
     func downloadImageFrom(urlString: String, imageMode: UIView.ContentMode) {
         guard let url = URL(string: urlString) else { return }
         downloadImageFrom(url: url, imageMode: imageMode)
+        imageCache.totalCostLimit = 80
+           
     }
+    
 
     func downloadImageFrom(url: URL, imageMode: UIView.ContentMode) {
         contentMode = imageMode
@@ -33,7 +36,7 @@ class CahcedImage: UIImageView {
                 guard let data = data, error == nil else { return }
                 DispatchQueue.main.async {
                     let imageToCache = UIImage(data: data)
-                    self.imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
+                    imageCache.setObject(imageToCache!, forKey: url.absoluteString as NSString)
                     self.image = imageToCache
                 }
             }
