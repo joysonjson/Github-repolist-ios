@@ -69,6 +69,23 @@ extension UIViewController {
         navigationController?.hero.navigationAnimationType = navigationAnimationType
         navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    func showAlertController( title: String,options: [SortOption],completion: @escaping (SortOption) -> Void) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
+        for (index, option) in options.enumerated() {
+            alertController.addAction(UIAlertAction(title: option.rawValue.uppercased(), style: .default, handler: { (_) in
+                completion(options[index])
+            }))
+        }
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        DispatchQueue.main.async {
+            self.present(alertController, animated: true, completion: nil)
+
+        }
+        
+       
+    }
 }
 
 extension URLRequest{

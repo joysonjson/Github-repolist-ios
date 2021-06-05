@@ -60,22 +60,9 @@ class RepoListViewController: UIViewController {
         navigationItem.rightBarButtonItem = barButtonItem
     }
     @objc private func openFilter(_ sender: Any) {
-        let alertController = UIAlertController(title: "Sort Based", message: nil, preferredStyle: .actionSheet)
-        alertController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
-        alertController.addAction(UIAlertAction(title: SortOption.stars.rawValue.uppercased(), style: .default, handler: { (_) in
-            self.sortOption = .stars
-        }))
-        
-        alertController.addAction(UIAlertAction(title: SortOption.forks.rawValue.uppercased(), style: .default, handler: { (_) in
-            self.sortOption = .forks
-        }))
-        
-        alertController.addAction(UIAlertAction(title: SortOption.lastUpdated.rawValue.uppercased(), style: .default, handler: { (_) in
-            self.sortOption = SortOption.lastUpdated
-        }))
-        
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertController, animated: true, completion: nil)
+        self.showAlertController(title: "Sort Based On", options: SortOption.allCases) { ( opted) in
+            self.sortOption = opted
+        }
     }
    
     private func getData(){

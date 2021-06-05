@@ -135,6 +135,29 @@ extension RepoDetailsViewController: UITableViewDataSource{
 }
 
 extension RepoDetailsViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            return
+        case 1:
+            if let url = self.contributors[indexPath.row].html_url {
+                UIApplication.shared.open(url)
+            }
+            break;
+        case 2:
+            if let url = self.issues[indexPath.row].html_url {
+                UIApplication.shared.open(url)
+            }
+            break;
+        case 3:
+            if let url = self.comemnts[indexPath.row].html_url {
+                UIApplication.shared.open(url)
+            }
+            break;
+        default:
+            break;
+        }
+    }
     
 }
 

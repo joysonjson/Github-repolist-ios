@@ -14,8 +14,8 @@
             filePath = "GithubRepo/ViewControllers/RepoListViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "RepoListViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -34,6 +34,22 @@
             endingLineNumber = "14"
             landmarkName = "getRepositories(langauge:sort:page:completion:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8DDE5CC3-914F-4F91-8939-FB437A979C5D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GithubRepo/ViewControllers/RepoListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "sortOption"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

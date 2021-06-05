@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SortOption: String {
+enum SortOption: String ,CaseIterable{
     case stars = "stars"
     case forks = "forks"
     case lastUpdated = "updated"
