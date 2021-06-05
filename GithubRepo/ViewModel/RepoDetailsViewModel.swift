@@ -24,14 +24,14 @@ struct RepoDetailsViewModel {
             }
         }else if (indexPath.section == 1){
             let contributer = contributers[indexPath.row]
-            return (contributer.login ?? "-","Contributions: \(contributer.contributions ?? 0)",nil)
+            return ("\(indexPath.row + 1). \(contributer.login ?? "-")","Contributions: \(contributer.contributions ?? 0)",nil)
             
         }else if (indexPath.section == 2){
             let issue = issues?[indexPath.row]
-            return (issue?.title ?? "-", issue?.body ?? "-",issue?.body?.getMarkdownContent())
+            return ( "\(indexPath.row + 1). \(issue?.title ?? "-")", issue?.body ?? "-",issue?.body?.getMarkdownContent())
         }else if (indexPath.section == 3){
             let comment = comments?[indexPath.row]
-            return (comment?.body ?? "", "Careted at \(comment?.created_at?.getDate() ?? "-") by \(comment?.user?.login ?? "")",nil)
+            return ("\(indexPath.row + 1). \(comment?.body ?? "")", "Careted at \(comment?.created_at?.getDate() ?? "-") by \(comment?.user?.login ?? "")",nil)
         
         }else{
             return ("","",nil)
