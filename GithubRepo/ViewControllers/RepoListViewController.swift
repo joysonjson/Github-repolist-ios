@@ -24,12 +24,18 @@ class RepoListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("You must create this view controller with a user.")
     }
-    
+    private var sortOption: SortOption = .stars {
+        didSet {
+            self.page = 1
+            self.getData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.repoCollectionView.register(RepoCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: RepoCollectionViewCell.self))
         self.setUp()
+        self.setupNavigationBarItem()
         getData()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,11 +54,32 @@ class RepoListViewController: UIViewController {
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = UIDevice.isPad ? 25 : 10
         self.repoCollectionView.collectionViewLayout = layout
- 
+    }
+    private func setupNavigationBarItem() {
+        let barButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(openFilter(_:)))
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+    @objc private func openFilter(_ sender: Any) {
+        let alertController = UIAlertController(title: "Sort Based", message: nil, preferredStyle: .actionSheet)
+        alertController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        alertController.addAction(UIAlertAction(title: SortOption.stars.rawValue.uppercased(), style: .default, handler: { (_) in
+            self.sortOption = .stars
+        }))
+        
+        alertController.addAction(UIAlertAction(title: SortOption.forks.rawValue.uppercased(), style: .default, handler: { (_) in
+            self.sortOption = .forks
+        }))
+        
+        alertController.addAction(UIAlertAction(title: SortOption.lastUpdated.rawValue.uppercased(), style: .default, handler: { (_) in
+            self.sortOption = SortOption.lastUpdated
+        }))
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
    
     private func getData(){
-        vm.getRepositories(langauge: self.selectedLanguage,page:self.page) { (res) in
+        vm.getRepositories(langauge: self.selectedLanguage, sort: sortOption.rawValue,page:self.page) { (res) in
             switch res {
             case .success(let repositories):
                 if (self.page == 1){
@@ -67,7 +94,6 @@ class RepoListViewController: UIViewController {
                     self.repoCollectionView.reloadData()
                 }
             case .failure(_):
-                print("Failure in pagination api")
                 break
                 
             }

@@ -48,49 +48,35 @@ struct RepoDetailsViewModel {
         var issues:[Issue] = []
         
         let qPrams:[String:Any] = ["per_page":3]
-print("FirstEnter")
         let httpUtility = HttpRequest.shared
         group.enter()
         
         httpUtility.getApiData(requestUrl: contributerUrl,resultType: [Contributer].self,queryParams: qPrams) { (res) in
             contributors = res ?? []
             group.leave()
-            print("leave contributerUrl")
-
             
         } andFailure: { (error) in
             group.leave()
         }
-        print("second Enter")
-
         group.enter()
 
         httpUtility.getApiData(requestUrl: issueUrl,resultType: [Issue].self,queryParams: qPrams) { (res) in
             issues = res ?? []
-            print("leave issueUrl")
-
             group.leave()
 
         } andFailure: { (error) in
             group.leave()
         }
-        print("third Enter")
-
         group.enter()
 
         httpUtility.getApiData(requestUrl: commentsUrl,resultType: [Comment].self,queryParams: qPrams) { (res) in
             comments = res ?? []
             group.leave()
-            print("leave commentsUrl")
-
         } andFailure: { (error) in
             group.leave()
         }
         group.notify(queue: .main){
-            print("Finished")
             completion(true,contributors,issues,comments)
         }
-        
-        
     }
 }

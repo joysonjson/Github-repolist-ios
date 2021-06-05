@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0852BD53266BB5BE0005F490 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852BD52266BB5BE0005F490 /* SortOption.swift */; };
 		088ADD9B2668C66C008A8C84 /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */; };
 		088ADDA42668CD28008A8C84 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDA32668CD28008A8C84 /* RepoViewModel.swift */; };
 		088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDAC2668CD78008A8C84 /* Repository.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0852BD52266BB5BE0005F490 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
 		088ADDA32668CD28008A8C84 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		088ADDAC2668CD78008A8C84 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				08BF7B47266A72B800D4285E /* DetailsToShowOptions.swift */,
 				088ADDB52668F619008A8C84 /* ErrorMessage.swift */,
 				088ADDEF26692A24008A8C84 /* ImageLoader.swift */,
+				0852BD52266BB5BE0005F490 /* SortOption.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				08BF7B2226696CE200D4285E /* RepoDetailsViewModel.swift in Sources */,
 				08BF7B38266A662600D4285E /* Issue.swift in Sources */,
 				088E43592668B1CB00877C58 /* ViewController.swift in Sources */,
+				0852BD53266BB5BE0005F490 /* SortOption.swift in Sources */,
 				088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */,
 				088ADDC12668FF63008A8C84 /* NetworkLogLevel.swift in Sources */,
 				088ADDCE26690946008A8C84 /* HttpCreateRequest.swift in Sources */,
