@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+/**
+Sorting option available for repositories
+*/
 enum SortOption: String ,CaseIterable{
     case stars = "stars"
     case forks = "forks"

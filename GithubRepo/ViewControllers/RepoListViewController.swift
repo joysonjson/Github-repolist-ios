@@ -8,6 +8,13 @@
 import UIKit
 import Hero
 
+/**
+ RepoListViewController shows the list of repositoories for a language in collection view based on sort selected option
+
+ # Notes: #
+ 1. Parameters must be **selectedLanguage**  sent though init
+*/
+
 class RepoListViewController: UIViewController {
     var selectedLanguage: String = ""
     let vm = RepoViewModel()
@@ -24,6 +31,7 @@ class RepoListViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("You must create this view controller with a user.")
     }
+    // current selected sort options default it is stars
     private var sortOption: SortOption = .stars {
         didSet {
             self.page = 1
@@ -45,6 +53,8 @@ class RepoListViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         disableHero()
     }
+    
+// layout of collectionview setup
     private func setUp(){
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let pad: CGFloat = UIDevice.isPhone ? 7 : 10
@@ -55,16 +65,19 @@ class RepoListViewController: UIViewController {
         layout.minimumLineSpacing = UIDevice.isPad ? 25 : 10
         self.repoCollectionView.collectionViewLayout = layout
     }
+
+//     bar item to open sorting options
     private func setupNavigationBarItem() {
         let barButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(openFilter(_:)))
         navigationItem.rightBarButtonItem = barButtonItem
     }
+    //    Funcation called clicking on sort bar item
     @objc private func openFilter(_ sender: Any) {
         self.showAlertController(title: "Sort Based On", options: SortOption.allCases) { ( opted) in
             self.sortOption = opted
         }
     }
-   
+   // api call  of the repositories and then reloads the collectionview
     private func getData(){
         vm.getRepositories(langauge: self.selectedLanguage, sort: sortOption.rawValue,page:self.page) { (res) in
             switch res {
@@ -121,8 +134,4 @@ extension RepoListViewController: UICollectionViewDataSource{
             }
         }
     }
-    override func didReceiveMemoryWarning() {
-        imageCache.removeAllObjects()
-    }
-    
 }

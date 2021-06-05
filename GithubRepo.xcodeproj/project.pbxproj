@@ -20,7 +20,6 @@
 		088ADDDA266920BD008A8C84 /* RepoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDD9266920BD008A8C84 /* RepoCollectionViewCell.swift */; };
 		088ADDE226692440008A8C84 /* Extension+UILayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDE126692440008A8C84 /* Extension+UILayout.swift */; };
 		088ADDE826692820008A8C84 /* RoundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDE726692820008A8C84 /* RoundImage.swift */; };
-		088ADDF026692A24008A8C84 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDEF26692A24008A8C84 /* ImageLoader.swift */; };
 		088ADDF526694BD5008A8C84 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDF426694BD5008A8C84 /* Label.swift */; };
 		088E43552668B1CB00877C58 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43542668B1CB00877C58 /* AppDelegate.swift */; };
 		088E43572668B1CB00877C58 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43562668B1CB00877C58 /* SceneDelegate.swift */; };
@@ -31,7 +30,7 @@
 		088E436C2668B1D400877C58 /* GithubRepoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E436B2668B1D400877C58 /* GithubRepoTests.swift */; };
 		088E43772668B1D400877C58 /* GithubRepoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43762668B1D400877C58 /* GithubRepoUITests.swift */; };
 		088E43A72668BB4000877C58 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43A62668BB4000877C58 /* Extension.swift */; };
-		088E43B02668BD8B00877C58 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43AF2668BD8B00877C58 /* Enum.swift */; };
+		088E43B02668BD8B00877C58 /* AlertOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43AF2668BD8B00877C58 /* AlertOptions.swift */; };
 		088E43B82668BE2000877C58 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43B72668BE2000877C58 /* Validation.swift */; };
 		088E43BD2668BE6600877C58 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43BC2668BE6600877C58 /* ValidationResult.swift */; };
 		088E43C22668BEB600877C58 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43C12668BEB600877C58 /* Constant.swift */; };
@@ -93,7 +92,6 @@
 		088ADDD9266920BD008A8C84 /* RepoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoCollectionViewCell.swift; sourceTree = "<group>"; };
 		088ADDE126692440008A8C84 /* Extension+UILayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UILayout.swift"; sourceTree = "<group>"; };
 		088ADDE726692820008A8C84 /* RoundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImage.swift; sourceTree = "<group>"; };
-		088ADDEF26692A24008A8C84 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		088ADDF426694BD5008A8C84 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		088E43512668B1CB00877C58 /* GithubRepo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubRepo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		088E43542668B1CB00877C58 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +108,7 @@
 		088E43762668B1D400877C58 /* GithubRepoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoUITests.swift; sourceTree = "<group>"; };
 		088E43782668B1D400877C58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		088E43A62668BB4000877C58 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
-		088E43AF2668BD8B00877C58 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
+		088E43AF2668BD8B00877C58 /* AlertOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOptions.swift; sourceTree = "<group>"; };
 		088E43B72668BE2000877C58 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		088E43BC2668BE6600877C58 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		088E43C12668BEB600877C58 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
@@ -259,14 +257,13 @@
 			children = (
 				088E43A62668BB4000877C58 /* Extension.swift */,
 				088ADDE126692440008A8C84 /* Extension+UILayout.swift */,
-				088E43AF2668BD8B00877C58 /* Enum.swift */,
+				088E43AF2668BD8B00877C58 /* AlertOptions.swift */,
 				088E43B72668BE2000877C58 /* Validation.swift */,
 				088E43C12668BEB600877C58 /* Constant.swift */,
 				088E43C62668BF4F00877C58 /* EndPoints.swift */,
 				088E43BC2668BE6600877C58 /* ValidationResult.swift */,
 				08BF7B47266A72B800D4285E /* DetailsToShowOptions.swift */,
 				088ADDB52668F619008A8C84 /* ErrorMessage.swift */,
-				088ADDEF26692A24008A8C84 /* ImageLoader.swift */,
 				0852BD52266BB5BE0005F490 /* SortOption.swift */,
 			);
 			path = Utility;
@@ -455,8 +452,7 @@
 				088ADDF526694BD5008A8C84 /* Label.swift in Sources */,
 				08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */,
 				088ADDE826692820008A8C84 /* RoundImage.swift in Sources */,
-				088ADDF026692A24008A8C84 /* ImageLoader.swift in Sources */,
-				088E43B02668BD8B00877C58 /* Enum.swift in Sources */,
+				088E43B02668BD8B00877C58 /* AlertOptions.swift in Sources */,
 				088E43BD2668BE6600877C58 /* ValidationResult.swift in Sources */,
 				088ADDDA266920BD008A8C84 /* RepoCollectionViewCell.swift in Sources */,
 				08BF7B34266A661900D4285E /* Comments.swift in Sources */,

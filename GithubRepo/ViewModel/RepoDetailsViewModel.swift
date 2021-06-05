@@ -7,6 +7,20 @@
 
 import Foundation
 struct RepoDetailsViewModel {
+    /**
+     This method returns the title and subtitle to repository details
+     - parameter type: First Double Number.
+     - parameter repo: Second Double Number.
+     - parameter contributers: Contributers of the repo
+     - parameter comments: top comments of the repo
+     - parameter issues: top issues of the repo
+     - parameter indexPath: IndexPath path for maping
+     - returns: 2 strings with Title, subtile
+
+     # Notes: #
+     2. Handle return type because it is optional for attributed type.
+    */
+
     func getValue(type: DetailsToShowOptions,repo: Repository?,contributers:[Contributer],comments:[Comment]?,issues:[Issue]?,indexPath:IndexPath)-> (String,String,NSAttributedString?){
         if (indexPath.section == 0){
             switch type {
@@ -37,6 +51,22 @@ struct RepoDetailsViewModel {
             return ("","",nil)
         }
     }
+    /**
+     This method sum two double numbers and returns.
+
+     Here is the discussion. This methods adds two double and return the optional Double.
+
+
+     - parameter contributeUrl: First URL
+     - parameter issueUrl: Second URL
+     - parameter commentsUrl: third URL.
+
+     - returns: (Bool,[Contributer],[Issue],[Comment])
+
+     # Notes: #
+     1. Disapth group make sure to leave all the block for sucess and failure
+    */
+
     func getDetailsData(contributeUrl: String?,issueUrl: String?,commentsUrl:String?, completion: @escaping(Bool,[Contributer],[Issue],[Comment])-> Void){
         
         guard let contributerUrl = URL(string:  contributeUrl ?? ""), let issueUrl = URL(string: issueUrl?.correctUrl() ?? ""), let commentsUrl = URL(string: commentsUrl?.correctUrl() ?? "") else {

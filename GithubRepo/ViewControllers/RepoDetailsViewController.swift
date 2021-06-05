@@ -7,6 +7,20 @@
 
 import UIKit
 import SDWebImage
+/**
+ Shows the details of repository
+
+ 
+
+ # Notes: #
+ 1. Clicking on cells will open the  **browsing url in safari**
+ 2.  Details about forks, start, etc..
+ 3.  Contributers, lists top 3 contributers
+ 4.  Lists top 3 issues
+ 5.  Lists top 3 coments
+*/
+
+
 class RepoDetailsViewController: UIViewController {
     
     @IBOutlet weak var detailsTableView: UITableView!
@@ -105,7 +119,7 @@ extension RepoDetailsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:
-            let imag = CachedImageView(frame: .zero)
+            let imag = UIImageView(frame: .zero)
             imag.contentMode = .scaleAspectFit
             imag.sd_setImage(with: self.repository?.owner?.avatar_url, completed: nil)
             imag.heroID = String(describing: idSelcted)
@@ -119,7 +133,6 @@ extension RepoDetailsViewController: UITableViewDataSource{
 
         case 3:
             if (self.comemnts.count == 0 ) { return nil}
-
                return self.getHeaderLabel(text: "Comments")
         default:
             return nil
@@ -129,9 +142,6 @@ extension RepoDetailsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
     }
-    override func didReceiveMemoryWarning() {
-        imageCache.removeAllObjects()
-    }
 }
 
 extension RepoDetailsViewController: UITableViewDelegate{
@@ -140,19 +150,13 @@ extension RepoDetailsViewController: UITableViewDelegate{
         case 0:
             return
         case 1:
-            if let url = self.contributors[indexPath.row].html_url {
-                UIApplication.shared.open(url)
-            }
+            self.openUrl(url: self.contributors[indexPath.row].html_url)
             break;
         case 2:
-            if let url = self.issues[indexPath.row].html_url {
-                UIApplication.shared.open(url)
-            }
+            self.openUrl(url: self.issues[indexPath.row].html_url)
             break;
         case 3:
-            if let url = self.comemnts[indexPath.row].html_url {
-                UIApplication.shared.open(url)
-            }
+            self.openUrl(url: self.comemnts[indexPath.row].html_url)
             break;
         default:
             break;
@@ -168,5 +172,10 @@ extension RepoDetailsViewController{
         label.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 5, left: 0, bottom: 10, right: 0))
         label.text = text
         return label
+    }
+    private func openUrl(url: URL?){
+        if let url = url{
+            UIApplication.shared.open(url)
+        }
     }
 }

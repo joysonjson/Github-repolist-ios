@@ -10,6 +10,8 @@ import UIKit
 import MarkdownKit
 import Hero
 extension UIViewController {
+    
+    // Call this from vc to hide keyboard
     func hideKeyboardWhenTappedAround() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -18,11 +20,21 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
-
     }
+    
     private var mainStoryBoard:UIStoryboard {
         return UIStoryboard.init(name: "Main", bundle: Bundle.main)
     }
+    /**
+     This method return view control instantiated from the main storyboard
+     - Warning: Only from **Main** storyboard
+     
+     # Example #
+     ```
+     let vc: ViewController = .getViewController(with: "ViewController")
+     ```
+     */
+    
     func getViewController<T:UIViewController> (with title:String = "") -> T {
         // getting a view controller
         let string = String.init(describing: T.self)
@@ -30,6 +42,14 @@ extension UIViewController {
         myViewController.title = title
         return myViewController as! T
     }
+    /**
+     - Warning: If there is no navigational controller will be return
+     
+     # Example #
+     ```
+     self.push(viewController:vc)
+     ```
+     */
 
     func push(viewController:UIViewController) {
         guard let navigation = self.navigationController else {
@@ -37,6 +57,15 @@ extension UIViewController {
         }
         navigation.pushViewController(viewController, animated: true)
     }
+    /**
+     Default function present alert with predifined values
+     - returns: option selected with enum
+     # Example #
+     ```
+     self.presentAlertWithTitle(title: "Error", message: validation.error ?? "", options: [.ok]) { (_) in
+     }
+     ```
+     */
     func presentAlertWithTitle(title: String, message: String, options: [AlertOptions], completion: @escaping (AlertOptions) -> Void) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         for (index, option) in options.enumerated() {
@@ -62,6 +91,9 @@ extension UIViewController {
         hero.isEnabled = true
         navigationController?.hero.isEnabled = true
     }
+    /**
+     next screen with animation
+     */
     
     func showHero(_ viewController: UIViewController, navigationAnimationType: HeroDefaultAnimationType = .autoReverse(presenting: .slide(direction: .leading))) {
         viewController.hero.isEnabled = true
@@ -69,6 +101,15 @@ extension UIViewController {
         navigationController?.hero.navigationAnimationType = navigationAnimationType
         navigationController?.pushViewController(viewController, animated: true)
     }
+    /**
+     Default function present alert with predifined values from SortOption enum
+     - returns: option selected with enum
+     # Example #
+     ```
+     self.showAlertController(title: "TItle", options: SortOption.allCases]) { ( opted) in
+     }
+     ```
+     */
     
     func showAlertController( title: String,options: [SortOption],completion: @escaping (SortOption) -> Void) {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .actionSheet)
@@ -113,6 +154,22 @@ extension UINavigationController {
 }
 
 public extension URL {
+    /**
+   adds query params to the url
+
+
+     - parameter key: Key of the url param.
+     - parameter value: value of the url param.
+     - returns: URL.
+
+     # Notes: #
+     1. Parameters must be **String** type
+
+     # Example #
+    ```
+     URL().queryItems(key, value: String(describing: val))
+     ```
+    */
     func queryItems(_ key: String, value: String?) -> URL {
         
         guard var urlComponents = URLComponents(string: absoluteString) else { return absoluteURL }
@@ -135,6 +192,9 @@ public extension URL {
 }
 
 extension UICollectionViewCell {
+    /**
+  adds shadow to collectionview cell
+ */
     func shadowDecorate() {
         let radius: CGFloat = 10
         contentView.layer.cornerRadius = radius
@@ -153,6 +213,13 @@ extension UICollectionViewCell {
 }
 
 extension UIView {
+    /**
+     Radius depending on the edgers
+
+     - parameter corners:UIRectCorner -> Top,left,right,bottom
+     - parameter radius:CGFloat  -> Value of radius
+    */
+
    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
@@ -162,6 +229,9 @@ extension UIView {
   
 }
 
+/**
+generic enum to follow standars
+*/
 
 public enum fontSize: CGFloat  {
     case small =  12
@@ -171,7 +241,9 @@ public enum fontSize: CGFloat  {
     case largest = 20
 }
 
-
+/**
+ UIDevice Type
+*/
 public extension UIDevice {
     class var isPhone: Bool {
         return UIDevice.current.userInterfaceIdiom == .phone
@@ -206,6 +278,19 @@ public extension String{
     func correctUrl()-> String{
         return replacingOccurrences(of: "\\s?\\{/[\\w\\s]*\\}", with: "", options: .regularExpression)
     }
+    /**
+     converts markdown to NSAttributedString
+     - returns: NSAttributedString,
+
+     # Notes: #
+     1. Parameters must be **double** type
+     # Example #
+    ```
+     string.getMarkdownContent()
+     ```
+    */
+
+
     func getMarkdownContent()->NSAttributedString{
         let markdownParser = MarkdownParser()
         return markdownParser.parse(self)

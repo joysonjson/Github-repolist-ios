@@ -6,6 +6,11 @@
 //
 
 import Foundation
+
+/**
+ ValidationResult , generic enum for validation
+ */
+
 struct ValidationResult
 {
     let success: Bool

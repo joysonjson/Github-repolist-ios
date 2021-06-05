@@ -41,7 +41,7 @@ class RepoCollectionViewCell: UICollectionViewCell {
     
         profileImage.anchor(top: self.contentView.topAnchor, leading: nil, bottom: nil, trailing: nil, size: CGSize(width: UIDevice.isPad ? 120 : 60, height:UIDevice.isPad ? 120 : 60))
         profileImage.centerXInSuperview()
-        titleLabel.anchor(top: profileImage.bottomAnchor, leading:  self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15),size: CGSize(width: self.frame.width - 30, height: 40))
+        titleLabel.anchor(top: profileImage.bottomAnchor, leading:  self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15),size: CGSize(width: self.frame.width - 30, height: 30))
 
         descriptionLabel.anchor(top: titleLabel.bottomAnchor, leading:  self.contentView.leadingAnchor, bottom: self.contentView.bottomAnchor, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 6, right: 15))
         descriptionLabel.preferredMaxLayoutWidth = self.frame.size.width - 30

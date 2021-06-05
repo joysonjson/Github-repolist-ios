@@ -6,6 +6,10 @@
 //
 
 import Foundation
+/**
+ DetailsToShowOptions enum shows details of a repo in details screen dynamically
+
+*/
 enum DetailsToShowOptions:String, CaseIterable  {
     case fullName = "Full Name"
     case description = "Description"
