@@ -36,14 +36,15 @@
 		088E43C22668BEB600877C58 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43C12668BEB600877C58 /* Constant.swift */; };
 		088E43C72668BF4F00877C58 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43C62668BF4F00877C58 /* EndPoints.swift */; };
 		088E43CD2668C00F00877C58 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088E43CC2668C00F00877C58 /* HttpRequest.swift */; };
-		08BF7B1726695C6800D4285E /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B1626695C6800D4285E /* Hero */; };
-		08BF7B1826695C6800D4285E /* Hero in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B1626695C6800D4285E /* Hero */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */; };
 		08BF7B2226696CE200D4285E /* RepoDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B2126696CE200D4285E /* RepoDetailsViewModel.swift */; };
-		08BF7B2C266A160400D4285E /* ComplexGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B2B266A160400D4285E /* ComplexGrid.swift */; };
-		08BF7B30266A19AC00D4285E /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B2F266A19AC00D4285E /* HeaderCollectionView.swift */; };
 		08BF7B34266A661900D4285E /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B33266A661900D4285E /* Comments.swift */; };
 		08BF7B38266A662600D4285E /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B37266A662600D4285E /* Issue.swift */; };
+		08BF7B44266A6ECC00D4285E /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B43266A6ECC00D4285E /* MarkdownKit */; };
+		08BF7B48266A72B800D4285E /* DetailsToShowOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08BF7B47266A72B800D4285E /* DetailsToShowOptions.swift */; };
+		08BF7B51266B572B00D4285E /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B50266B572B00D4285E /* SDWebImage */; };
+		08BF7B67266B86B400D4285E /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B66266B86B400D4285E /* Hero */; };
+		08BF7B68266B86B400D4285E /* Hero in Embed Frameworks */ = {isa = PBXBuildFile; productRef = 08BF7B66266B86B400D4285E /* Hero */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +71,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				08BF7B1826695C6800D4285E /* Hero in Embed Frameworks */,
+				08BF7B68266B86B400D4285E /* Hero in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,10 +116,9 @@
 		088E43CC2668C00F00877C58 /* HttpRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
 		08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewController.swift; sourceTree = "<group>"; };
 		08BF7B2126696CE200D4285E /* RepoDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoDetailsViewModel.swift; sourceTree = "<group>"; };
-		08BF7B2B266A160400D4285E /* ComplexGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexGrid.swift; sourceTree = "<group>"; };
-		08BF7B2F266A19AC00D4285E /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
 		08BF7B33266A661900D4285E /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		08BF7B37266A662600D4285E /* Issue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
+		08BF7B47266A72B800D4285E /* DetailsToShowOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsToShowOptions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,7 +126,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08BF7B1726695C6800D4285E /* Hero in Frameworks */,
+				08BF7B51266B572B00D4285E /* SDWebImage in Frameworks */,
+				08BF7B67266B86B400D4285E /* Hero in Frameworks */,
+				08BF7B44266A6ECC00D4285E /* MarkdownKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				088ADDD9266920BD008A8C84 /* RepoCollectionViewCell.swift */,
-				08BF7B2F266A19AC00D4285E /* HeaderCollectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +262,7 @@
 				088E43C12668BEB600877C58 /* Constant.swift */,
 				088E43C62668BF4F00877C58 /* EndPoints.swift */,
 				088E43BC2668BE6600877C58 /* ValidationResult.swift */,
+				08BF7B47266A72B800D4285E /* DetailsToShowOptions.swift */,
 				088ADDB52668F619008A8C84 /* ErrorMessage.swift */,
 				088ADDEF26692A24008A8C84 /* ImageLoader.swift */,
 			);
@@ -285,7 +287,6 @@
 				088E43582668B1CB00877C58 /* ViewController.swift */,
 				088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */,
 				08BF7B1C26695D5E00D4285E /* RepoDetailsViewController.swift */,
-				08BF7B2B266A160400D4285E /* ComplexGrid.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -308,7 +309,9 @@
 			);
 			name = GithubRepo;
 			packageProductDependencies = (
-				08BF7B1626695C6800D4285E /* Hero */,
+				08BF7B43266A6ECC00D4285E /* MarkdownKit */,
+				08BF7B50266B572B00D4285E /* SDWebImage */,
+				08BF7B66266B86B400D4285E /* Hero */,
 			);
 			productName = GithubRepo;
 			productReference = 088E43512668B1CB00877C58 /* GithubRepo.app */;
@@ -382,7 +385,9 @@
 			);
 			mainGroup = 088E43482668B1CB00877C58;
 			packageReferences = (
-				08BF7B1526695C6800D4285E /* XCRemoteSwiftPackageReference "Hero" */,
+				08BF7B42266A6ECC00D4285E /* XCRemoteSwiftPackageReference "MarkdownKit" */,
+				08BF7B4F266B572A00D4285E /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				08BF7B65266B86B400D4285E /* XCRemoteSwiftPackageReference "Hero" */,
 			);
 			productRefGroup = 088E43522668B1CB00877C58 /* Products */;
 			projectDirPath = "";
@@ -431,7 +436,6 @@
 				088ADDA42668CD28008A8C84 /* RepoViewModel.swift in Sources */,
 				088ADD9B2668C66C008A8C84 /* RepoListViewController.swift in Sources */,
 				08BF7B2226696CE200D4285E /* RepoDetailsViewModel.swift in Sources */,
-				08BF7B2C266A160400D4285E /* ComplexGrid.swift in Sources */,
 				08BF7B38266A662600D4285E /* Issue.swift in Sources */,
 				088E43592668B1CB00877C58 /* ViewController.swift in Sources */,
 				088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */,
@@ -445,7 +449,6 @@
 				088ADDB62668F61A008A8C84 /* ErrorMessage.swift in Sources */,
 				088E43C22668BEB600877C58 /* Constant.swift in Sources */,
 				088ADDF526694BD5008A8C84 /* Label.swift in Sources */,
-				08BF7B30266A19AC00D4285E /* HeaderCollectionView.swift in Sources */,
 				08BF7B1D26695D5E00D4285E /* RepoDetailsViewController.swift in Sources */,
 				088ADDE826692820008A8C84 /* RoundImage.swift in Sources */,
 				088ADDF026692A24008A8C84 /* ImageLoader.swift in Sources */,
@@ -455,6 +458,7 @@
 				08BF7B34266A661900D4285E /* Comments.swift in Sources */,
 				088E43B82668BE2000877C58 /* Validation.swift in Sources */,
 				088ADDC92668FF8B008A8C84 /* NetworkLogger.swift in Sources */,
+				08BF7B48266A72B800D4285E /* DetailsToShowOptions.swift in Sources */,
 				088E43A72668BB4000877C58 /* Extension.swift in Sources */,
 				088ADDE226692440008A8C84 /* Extension+UILayout.swift in Sources */,
 			);
@@ -785,7 +789,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		08BF7B1526695C6800D4285E /* XCRemoteSwiftPackageReference "Hero" */ = {
+		08BF7B42266A6ECC00D4285E /* XCRemoteSwiftPackageReference "MarkdownKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bmoliveira/MarkdownKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.1;
+			};
+		};
+		08BF7B4F266B572A00D4285E /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
+		08BF7B65266B86B400D4285E /* XCRemoteSwiftPackageReference "Hero" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
 			requirement = {
@@ -796,9 +816,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		08BF7B1626695C6800D4285E /* Hero */ = {
+		08BF7B43266A6ECC00D4285E /* MarkdownKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 08BF7B1526695C6800D4285E /* XCRemoteSwiftPackageReference "Hero" */;
+			package = 08BF7B42266A6ECC00D4285E /* XCRemoteSwiftPackageReference "MarkdownKit" */;
+			productName = MarkdownKit;
+		};
+		08BF7B50266B572B00D4285E /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08BF7B4F266B572A00D4285E /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		08BF7B66266B86B400D4285E /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 08BF7B65266B86B400D4285E /* XCRemoteSwiftPackageReference "Hero" */;
 			productName = Hero;
 		};
 /* End XCSwiftPackageProductDependency section */

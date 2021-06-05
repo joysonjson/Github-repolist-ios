@@ -8,12 +8,13 @@
 import Foundation
 
 struct RepoViewModel {
-    func getRepositories(langauge: String, completion: @escaping(Result<[Repository], ErrorMessage>)-> Void){
-        let httpUtility = HttpRequest()
+    func getRepositories(langauge: String,page: Int, completion: @escaping(Result<Repositories?, ErrorMessage>)-> Void){
+        let httpUtility = HttpRequest.shared
         guard let url = URL(string: EndPoints.baseUrl+EndPoints.searchRepositories) else { return }
-        let queryParams = ["q":"language:\(langauge)","sort":"stars","order":"desc"]
+        print("Calling pagination api",url)
+        let queryParams:[String:Any] = ["q":"language:\(langauge)","sort":"stars","order":"desc","page":page]
         httpUtility.getApiData(requestUrl: url,resultType: Repositories.self,queryParams:queryParams) { (res) in
-            completion(.success(res?.items ?? []))
+            completion(.success(res))
         } andFailure: { (error) in
             completion(.failure(.invalidData))
         }

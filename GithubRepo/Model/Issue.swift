@@ -17,4 +17,6 @@ struct Issue: Decodable {
     let body: String?
     let title: String?
     let locked:Bool?
+    let user: Contributer?
+
 }

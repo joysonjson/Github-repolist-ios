@@ -12,6 +12,8 @@ class RepoListViewController: UIViewController {
     var selectedLanguage: String = ""
     let vm = RepoViewModel()
     var data: [Repository] = []
+    var incompleteResult : Bool = false
+    private var page = 1
     
     @IBOutlet weak var repoCollectionView: UICollectionView!
     init?(coder: NSCoder, selectedLanguage: String) {
@@ -31,6 +33,7 @@ class RepoListViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         enableHero()
+        self.title = self.selectedLanguage
     }
     override func viewWillDisappear(_ animated: Bool) {
         disableHero()
@@ -47,22 +50,27 @@ class RepoListViewController: UIViewController {
     }
    
     private func getData(){
-        vm.getRepositories(langauge: self.selectedLanguage) { (res) in
+        vm.getRepositories(langauge: self.selectedLanguage,page:self.page) { (res) in
             switch res {
-            case .success(let results):
-                self.data = results
+            case .success(let repositories):
+                if (self.page == 1){
+                    self.data = repositories?.items ?? []
+                    self.incompleteResult = !(repositories?.incomplete_results ?? false)
+                }else{
+                    self.data.append(contentsOf: repositories?.items ?? [])
+                    self.incompleteResult = !(repositories?.incomplete_results ?? false)
+
+                }
                 DispatchQueue.main.async {
                     self.repoCollectionView.reloadData()
                 }
-            case .failure(let error):
-                self.presentAlertWithTitle(title: "Alert", message: error.rawValue, options: [.ok]) { (_) in
-                }
+            case .failure(_):
+                print("Failure in pagination api")
+                break
+                
             }
-
         }
-        
     }
-    
 }
 extension RepoListViewController:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -86,14 +94,16 @@ extension RepoListViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: RepoCollectionViewCell.self), for: indexPath) as! RepoCollectionViewCell
         let item = self.data[indexPath.row]
-        cell.configure(image:  item.owner?.avatar_url?.absoluteString ?? "", title: item.name ?? "", description: item.description ?? "")
+        cell.configure(image:  item.owner?.avatar_url, title: item.name ?? "", description: item.description ?? "")
         return cell
     }
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y > 0) {
-            self.navigationController?.navigationBar.barTintColor = .white
-        } else {
-            self.navigationController?.navigationBar.barTintColor = .clear
+        if(self.repoCollectionView.contentOffset.y >= (self.repoCollectionView.contentSize.height - self.repoCollectionView.bounds.size.height)) {
+            if incompleteResult{
+                page = page + 1
+                self.getData()
+            }
         }
     }
     override func didReceiveMemoryWarning() {

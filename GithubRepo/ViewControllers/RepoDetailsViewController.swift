@@ -6,15 +6,7 @@
 //
 
 import UIKit
-enum DetailsToShowOptions:String, CaseIterable  {
-    case fullName = "Full Name"
-    case description = "Description"
-    case stars = "Stars"
-    case forks = "Forks"
-    case lastUpdated = "Last Updated"
-}
-
-
+import SDWebImage
 class RepoDetailsViewController: UIViewController {
     
     @IBOutlet weak var detailsTableView: UITableView!
@@ -31,7 +23,6 @@ class RepoDetailsViewController: UIViewController {
         super.init(coder: coder)
         self.repository = repository
         self.idSelcted = idSelcted
-
     }
     
     required init?(coder: NSCoder) {
@@ -41,6 +32,7 @@ class RepoDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getApiData()
+        self.title = self.repository?.name
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -60,19 +52,33 @@ class RepoDetailsViewController: UIViewController {
             self.contributors = contributer
             self.comemnts = comments
             self.issues = issues
-            self.detailsTableView.reloadData()
-            debugPrint(self.contributors,self.comemnts,self.issues)
+            DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+                self.detailsTableView.reloadData()
+            })
         }
-    
     }
 }
 
 extension RepoDetailsViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? self.dataToDispaly.count : 0
+        switch section {
+        case 0:
+            return self.dataToDispaly.count
+        case 1:
+            return self.contributors.count
+        case 2:
+            return self.issues.count
+        case 3:
+            return self.comemnts.count
+        default:
+            return 0
+        }
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if (self.contributors.count > 0 || self.issues.count > 0 || self.comemnts.count > 0){
+            return 4
+        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -82,25 +88,43 @@ extension RepoDetailsViewController: UITableViewDataSource{
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
         }
         let opt = self.dataToDispaly[indexPath.row]
-        cell.textLabel?.text = opt.rawValue
-        cell.detailTextLabel?.text = vm.getValue(type: opt, repo: self.repository)
+        let (title,description,attr) = vm.getValue(type: opt, repo: self.repository,contributers: self.contributors, comments: self.comemnts, issues: self.issues, indexPath: indexPath)
+        cell.textLabel?.text = title
+        cell.detailTextLabel?.text = description
+        if let body = attr{
+            cell.detailTextLabel?.attributedText = body
+            
+        }
         cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.lineBreakMode = .byWordWrapping
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        return  UITableView.automaticDimension
 
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if (section != 0 ) { return nil}
-        let imag = CachedImageView(frame: .zero)
-        imag.contentMode = .scaleAspectFit
-        imag.downloadImageFrom(urlString: self.repository?.owner?.avatar_url?.absoluteString ?? "", imageMode: .center) 
-        imag.heroID = String(describing: idSelcted)
-        imag.fillSuperview()
-        imag.centerXInSuperview()
-        return imag
+        switch section {
+        case 0:
+            let imag = CachedImageView(frame: .zero)
+            imag.contentMode = .scaleAspectFit
+            imag.sd_setImage(with: self.repository?.owner?.avatar_url, completed: nil)
+            imag.heroID = String(describing: idSelcted)
+            return imag
+        case 1:
+            if (self.contributors.count == 0 ) { return nil}
+            return self.getHeaderLabel(text: "Contributors")
+        case 2:
+            if (self.issues.count == 0 ) { return nil}
+            return self.getHeaderLabel(text: "Issues")
+
+        case 3:
+            if (self.comemnts.count == 0 ) { return nil}
+               return self.getHeaderLabel(text: "Comments")
+        default:
+            return nil
+        }
+      
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
@@ -112,4 +136,14 @@ extension RepoDetailsViewController: UITableViewDataSource{
 
 extension RepoDetailsViewController: UITableViewDelegate{
     
+}
+
+extension RepoDetailsViewController{
+    func getHeaderLabel(text: String)->Label{
+        let label = Label()
+        label.configure(size: .largest, weight: .heavy, numberOfLines: 0)
+        label.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, padding: UIEdgeInsets(top: 5, left: 0, bottom: 10, right: 0))
+        label.text = text
+        return label
+    }
 }

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 
 class RepoCollectionViewCell: UICollectionViewCell {
 
@@ -17,15 +17,15 @@ class RepoCollectionViewCell: UICollectionViewCell {
     private let titleLabel: Label = {
         let label = Label(frame: .zero)
         label.configure(size: .large, weight: .semibold, numberOfLines: 1)
-        label.text = "This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf his is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf his is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf"
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     private let descriptionLabel: Label = {
         let label = Label(frame: .infinite,color: .gray)
         label.configure(size: .reqular, weight: .regular, numberOfLines: 0)
-        label.text = "This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf his is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf his is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf This is not a mmoney  asdfdsf"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.lineBreakMode = .byTruncatingTail
         return label
     }()
   
@@ -39,16 +39,13 @@ class RepoCollectionViewCell: UICollectionViewCell {
         self.contentView.addSubview(titleLabel)
         self.contentView.addSubview(descriptionLabel)
 
-        profileImage.anchor(top: self.contentView.topAnchor, leading: self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0), size: CGSize(width: 80, height: 80))
-        titleLabel.anchor(top: profileImage.bottomAnchor, leading:  self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0),size: CGSize(width: self.frame.width - 15, height: 40))
+        profileImage.anchor(top: self.contentView.topAnchor, leading: nil, bottom: nil, trailing: nil, size: CGSize(width: 80, height: 80))
+        profileImage.centerXInSuperview()
+        titleLabel.anchor(top: profileImage.bottomAnchor, leading:  self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15),size: CGSize(width: self.frame.width - 30, height: 40))
 
-        descriptionLabel.anchor(top: self.titleLabel.bottomAnchor, leading: self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 3, left: 15, bottom: 5, right: 5))
-        descriptionLabel.preferredMaxLayoutWidth = self.frame.size.width
+        descriptionLabel.anchor(top: titleLabel.bottomAnchor, leading:  self.contentView.leadingAnchor, bottom: nil, trailing: nil,padding: UIEdgeInsets(top: 0, left: 15, bottom: 6, right: 15))
+        descriptionLabel.preferredMaxLayoutWidth = self.frame.size.width - 30
         self.contentView.backgroundColor = .systemBackground
-      
-     
-        
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -59,8 +56,8 @@ class RepoCollectionViewCell: UICollectionViewCell {
         self.shadowDecorate()
         self.contentView.roundCorners(corners: [.topLeft], radius: 20)
     }
-    func configure(image: String,title: String, description: String){
-        profileImage.downloadImageFrom(urlString: image, imageMode: .center)
+    func configure(image: URL?,title: String, description: String){
+        profileImage.sd_setImage(with: image, completed: nil)
         self.titleLabel.text = title
         self.descriptionLabel.text = description
     }

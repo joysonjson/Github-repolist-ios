@@ -9,6 +9,24 @@
           "revision": "efa709686035831b23b7bf58f652b0c4b892aa1d",
           "version": "1.6.1"
         }
+      },
+      {
+        "package": "MarkdownKit",
+        "repositoryURL": "https://github.com/bmoliveira/MarkdownKit.git",
+        "state": {
+          "branch": null,
+          "revision": "5056f3305d3499f44d8815530d560b87082e0cf5",
+          "version": "1.7.1"
+        }
+      },
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
+        "state": {
+          "branch": null,
+          "revision": "76dd4b49110b8624317fc128e7fa0d8a252018bc",
+          "version": "5.11.1"
+        }
       }
     ]
   },

@@ -22,7 +22,7 @@ struct HttpCreateRequest {
      - Parameter contentType: String, eg: "applicaction/json"
      - Returns: URLRequest , with configured URL, header and query params
      */
-    internal func createRequest(httpMethod:HTTPMethod,url:URL,queryParams: [String:Any] = [:],headers:[String:String] = [:],contentType:String = "application/json") ->URLRequest{
+    internal func createRequest(httpMethod:HTTPMethod,url:URL,queryParams: [String:Any] = [:],headers:[String:Any] = [:],contentType:String = "application/json") ->URLRequest{
         var request:URLRequest!
 //        var components = URLComponents(string: url.absoluteString)
         
@@ -33,9 +33,9 @@ struct HttpCreateRequest {
         
         request = URLRequest(url: absoluteUrl)
         for (key,val) in headers {
-            request.setValue(val, forHTTPHeaderField: key)
+            request.setValue(String(describing: val), forHTTPHeaderField: key)
         }
-     
+    
         request.setValue(contentType, forHTTPHeaderField:"Content-Type")
         
         request.httpMethod = httpMethod.rawValue

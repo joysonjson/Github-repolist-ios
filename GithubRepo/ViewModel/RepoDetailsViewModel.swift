@@ -7,22 +7,35 @@
 
 import Foundation
 struct RepoDetailsViewModel {
-    func getValue(type: DetailsToShowOptions,repo: Repository?)-> String{
-        switch type {
-        case .fullName:
-            return repo?.full_name ?? ""
-        case .description:
-            return repo?.description ?? ""
-        case .stars:
-            return String(describing: repo?.stargazers_count ?? 0)
+    func getValue(type: DetailsToShowOptions,repo: Repository?,contributers:[Contributer],comments:[Comment]?,issues:[Issue]?,indexPath:IndexPath)-> (String,String,NSAttributedString?){
+        if (indexPath.section == 0){
+            switch type {
+            case .fullName:
+                return (type.rawValue, repo?.full_name ?? "",nil)
+            case .description:
+                return (type.rawValue,repo?.description ?? "",nil)
+            case .stars:
+                return (type.rawValue,String(describing: repo?.stargazers_count ?? 0),nil)
+            case .forks:
+                return (type.rawValue,String(describing: repo?.forks_count ?? 0),nil)
+            case .lastUpdated:
+                return (type.rawValue,repo?.updated_at?.getDate() ?? "",nil)
+                
+            }
+        }else if (indexPath.section == 1){
+            let contributer = contributers[indexPath.row]
+            return (contributer.login ?? "-","Contributions: \(contributer.contributions ?? 0)",nil)
             
-        case .forks:
-            return String(describing: repo?.forks_count ?? 0)
-        case .lastUpdated:
-            return repo?.updated_at?.getDate() ?? ""
-            
-        }
+        }else if (indexPath.section == 2){
+            let issue = issues?[indexPath.row]
+            return (issue?.title ?? "-", issue?.body ?? "-",issue?.body?.getMarkdownContent())
+        }else if (indexPath.section == 3){
+            let comment = comments?[indexPath.row]
+            return (comment?.body ?? "", "Careted at \(comment?.created_at?.getDate() ?? "-") by \(comment?.user?.login ?? "")",nil)
         
+        }else{
+            return ("","",nil)
+        }
     }
     func getDetailsData(contributeUrl: String?,issueUrl: String?,commentsUrl:String?, completion: @escaping(Bool,[Contributer],[Issue],[Comment])-> Void){
         
@@ -35,33 +48,41 @@ struct RepoDetailsViewModel {
         var issues:[Issue] = []
         
         let qPrams:[String:Any] = ["per_page":3]
-
-        let httpUtility = HttpRequest()
+print("FirstEnter")
+        let httpUtility = HttpRequest.shared
         group.enter()
         
         httpUtility.getApiData(requestUrl: contributerUrl,resultType: [Contributer].self,queryParams: qPrams) { (res) in
             contributors = res ?? []
             group.leave()
+            print("leave contributerUrl")
+
             
         } andFailure: { (error) in
             group.leave()
         }
+        print("second Enter")
+
         group.enter()
 
         httpUtility.getApiData(requestUrl: issueUrl,resultType: [Issue].self,queryParams: qPrams) { (res) in
             issues = res ?? []
+            print("leave issueUrl")
+
             group.leave()
-            
-            
+
         } andFailure: { (error) in
             group.leave()
         }
+        print("third Enter")
+
         group.enter()
 
         httpUtility.getApiData(requestUrl: commentsUrl,resultType: [Comment].self,queryParams: qPrams) { (res) in
             comments = res ?? []
             group.leave()
-            
+            print("leave commentsUrl")
+
         } andFailure: { (error) in
             group.leave()
         }

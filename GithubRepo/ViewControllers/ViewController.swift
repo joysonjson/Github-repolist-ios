@@ -15,14 +15,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
-        let validation = ProgrammingLanguageValidation().Validate(langauge: "Swift")
-
-        guard let vc = storyboard?.instantiateViewController(identifier:  String(describing: RepoListViewController.self), creator: { coder in
-            return RepoListViewController(coder: coder, selectedLanguage: validation.value!)
-          }) else {
-              fatalError("Failed to load RepoListViewController from storyboard.")
-          }
-        self.push(viewController: vc)
+        let validation = ProgrammingLanguageValidation().Validate(langauge: "swift")
+        if validation.success{
+            guard let vc = storyboard?.instantiateViewController(identifier:  String(describing: RepoListViewController.self), creator: { coder in
+                return RepoListViewController(coder: coder, selectedLanguage: validation.value!)
+              }) else {
+                  fatalError("Failed to load RepoListViewController from storyboard.")
+              }
+            self.push(viewController: vc)
+        }
     }
 
     @IBAction func searchAction(_ sender: UIButton) {

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MarkdownKit
 import Hero
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
@@ -18,6 +19,16 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
 
+    }
+    private var mainStoryBoard:UIStoryboard {
+        return UIStoryboard.init(name: "Main", bundle: Bundle.main)
+    }
+    func getViewController<T:UIViewController> (with title:String = "") -> T {
+        // getting a view controller
+        let string = String.init(describing: T.self)
+        let myViewController = self.mainStoryBoard.instantiateViewController(withIdentifier: string)
+        myViewController.title = title
+        return myViewController as! T
     }
 
     func push(viewController:UIViewController) {
@@ -178,6 +189,9 @@ public extension String{
     func correctUrl()-> String{
         return replacingOccurrences(of: "\\s?\\{/[\\w\\s]*\\}", with: "", options: .regularExpression)
     }
-    
+    func getMarkdownContent()->NSAttributedString{
+        let markdownParser = MarkdownParser()
+        return markdownParser.parse(self)
+    }
     
 }

@@ -46,4 +46,6 @@ struct Contributer: Decodable {
     let avatar_url:URL?
     let gravatar_id:String?
     let url:URL?
+    let html_url: URL?
+    let contributions:Int?
 }

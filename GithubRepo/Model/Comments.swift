@@ -13,4 +13,6 @@ struct Comment: Decodable {
     let created_at: String?
     let updated_at: String?
     let body: String?
+    let user: Contributer?
+    
 }

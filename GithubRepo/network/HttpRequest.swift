@@ -13,6 +13,14 @@ struct HttpRequest{
     let service = NetworkSession()
     let createRequest = HttpCreateRequest()
     public typealias queryParams = [String:Any]
+    public var headers: [String:Any] = [:]
+    
+
+    public static var shared = HttpRequest()
+    
+    private init(){
+        
+    }
 
     /**
      GET Api call
@@ -25,7 +33,7 @@ struct HttpRequest{
      */
 
     func getApiData<T:Decodable>(requestUrl: URL, resultType: T.Type, queryParams:queryParams = [:],withSuccess successBlock:@escaping (_ object:T?)->Void,andFailure failureBlock: @escaping (_ error: String)->Void){
-        let req = createRequest.createRequest(httpMethod: .get, url: requestUrl, queryParams: queryParams, headers: [:])
+        let req = createRequest.createRequest(httpMethod: .get, url: requestUrl, queryParams: queryParams, headers: headers)
         service.call(with: req) { (response,repsonseData,error ) in
             let (staus,err,res) = self.reponseParser(response: response, responseData: repsonseData, error: error, resultType: T.self)
             if (staus){
