@@ -58,8 +58,8 @@ extension HttpRequest{
      - Returns: T, Decodable object
      */
     private func reponseParser<T:Decodable>(response: URLResponse?,responseData: Data?,error: Error?,resultType:T.Type )-> (Bool,String?,T?){
-        let httpResponse = response as! HTTPURLResponse
-        if 200...300 ~= httpResponse.statusCode , let data = responseData{
+        let httpResponse = response as? HTTPURLResponse
+        if 200...300 ~= httpResponse?.statusCode ?? 404, let data = responseData{
             let res = try? JSONDecoder().decode(T.self, from: data)
             if let obj = res{
                 return (true,error?.localizedDescription,obj)

@@ -28,6 +28,7 @@ class RepoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.repoCollectionView.register(RepoCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: RepoCollectionViewCell.self))
         self.setUp()
         getData()
     }
@@ -40,12 +41,13 @@ class RepoListViewController: UIViewController {
     }
     private func setUp(){
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-             layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: self.view.bounds.width/3 - 16, height: 200)
+        let pad: CGFloat = UIDevice.isPhone ? 7 : 10
+        layout.sectionInset = UIEdgeInsets(top: 0, left: pad, bottom: 0, right: pad)
+        let dime = self.view.frame.width > self.view.frame.height ? self.view.frame.height : self.view.frame.width
+        layout.itemSize = CGSize(width:dime/3 - 16, height: dime/3)
         layout.minimumInteritemSpacing = 5
         layout.minimumLineSpacing = UIDevice.isPad ? 25 : 10
         self.repoCollectionView.collectionViewLayout = layout
-        self.repoCollectionView.register(RepoCollectionViewCell.self, forCellWithReuseIdentifier: String(describing: RepoCollectionViewCell.self))
  
     }
    

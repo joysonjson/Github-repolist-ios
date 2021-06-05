@@ -93,7 +93,6 @@ extension RepoDetailsViewController: UITableViewDataSource{
         cell.detailTextLabel?.text = description
         if let body = attr{
             cell.detailTextLabel?.attributedText = body
-            
         }
         cell.detailTextLabel?.numberOfLines = 0
         cell.detailTextLabel?.lineBreakMode = .byWordWrapping
@@ -120,6 +119,7 @@ extension RepoDetailsViewController: UITableViewDataSource{
 
         case 3:
             if (self.comemnts.count == 0 ) { return nil}
+
                return self.getHeaderLabel(text: "Comments")
         default:
             return nil
