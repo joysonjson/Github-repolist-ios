@@ -79,12 +79,15 @@ class RepoListViewController: UIViewController {
     }
    // api call  of the repositories and then reloads the collectionview
     private func getData(){
-        vm.getRepositories(langauge: self.selectedLanguage, sort: sortOption.rawValue,page:self.page) { (res) in
-            switch res {
-            case .success(let repositories):
+        vm.getRepositories(langauge: self.selectedLanguage, sort: sortOption.rawValue,page:self.page) { (status,repositories,error) in
+            if (status){
                 if (self.page == 1){
                     self.data = repositories?.items ?? []
                     self.incompleteResult = !(repositories?.incomplete_results ?? false)
+                    if (repositories?.items?.count == 0) {
+                        self.presentAlertWithTitle(title: "Error", message: "Unable to find result for the language", options: [.ok]) { (_) in
+                        }
+                    }
                 }else{
                     self.data.append(contentsOf: repositories?.items ?? [])
                     self.incompleteResult = !(repositories?.incomplete_results ?? false)
@@ -93,9 +96,15 @@ class RepoListViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.repoCollectionView.reloadData()
                 }
-            case .failure(_):
-                break
-                
+            }else{
+                if (self.page == 1){
+                    DispatchQueue.main.async {
+                        self.presentAlertWithTitle(title: "Error", message: error ?? "", options: [.ok]) { (_) in
+                            self.navigationController?.popViewController(animated: true)
+
+                        }
+                    }
+                }
             }
         }
     }

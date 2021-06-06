@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  EnterProgrammingNameViewController.swift
 //  GithubRepo
 //
 //  Created by Joyson P S on 03/06/21.
@@ -14,7 +14,7 @@ import UIKit
  2. Launch all View controller from storyboard
 
 */
-class ViewController: UIViewController {
+class EnterProgrammingNameViewController: UIViewController {
 
     @IBOutlet weak var programNameTextField: UITextField!
     @IBOutlet weak var searchButton: UIButton!
@@ -24,7 +24,12 @@ class ViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        self.programNameTextField.text = ""
+
+    }
     @IBAction func searchAction(_ sender: UIButton) {
+        self.programNameTextField.resignFirstResponder()
         let validation = ProgrammingLanguageValidation().validate(langauge: self.programNameTextField.text)
         if validation.success{
             guard let vc = storyboard?.instantiateViewController(identifier:  String(describing: RepoListViewController.self), creator: { coder in
@@ -32,6 +37,7 @@ class ViewController: UIViewController {
               }) else {
                   fatalError("Failed to load RepoListViewController from storyboard.")
               }
+            vc.view.accessibilityIdentifier = "RepoListViewController"
             self.push(viewController: vc)
         }else{
             self.presentAlertWithTitle(title: "Error", message: validation.error ?? "", options: [.ok]) { (_) in
@@ -42,3 +48,9 @@ class ViewController: UIViewController {
 
 }
 
+extension EnterProgrammingNameViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder() // dismiss keyboard
+        return true
+    }
+}

@@ -19,14 +19,14 @@ struct RepoViewModel {
      2. Handle return type because it is optional.
     */
 
-    func getRepositories(langauge: String,sort: String,page: Int, completion: @escaping(Result<Repositories?, ErrorMessage>)-> Void){
+    func getRepositories(langauge: String,sort: String,page: Int, completion: @escaping(Bool,Repositories?, String?)-> Void){
         let httpUtility = HttpRequest.shared
         guard let url = URL(string: EndPoints.baseUrl+EndPoints.searchRepositories) else { return }
         let queryParams:[String:Any] = ["q":"language:\(langauge)","sort":sort,"order":"desc","page":page]
         httpUtility.getApiData(requestUrl: url,resultType: Repositories.self,queryParams:queryParams) { (res) in
-            completion(.success(res))
+            completion(true,res, nil)
         } andFailure: { (error) in
-            completion(.failure(.invalidData))
+            completion(false,nil, error)
         }
 
     }

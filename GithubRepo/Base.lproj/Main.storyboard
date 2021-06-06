@@ -9,21 +9,25 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Enter Programming Name View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GithubRepo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EnterProgrammingNameViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="EnterProgrammingNameViewController" customModule="GithubRepo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="swift" borderStyle="roundedRect" placeholder="pragramming language" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6mY-yX-wv2">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="adfasdfbjkasbffdadsfnasdfas345345u8u345  " borderStyle="roundedRect" placeholder="pragramming language" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6mY-yX-wv2">
                                 <rect key="frame" x="25" y="222.5" width="364" height="40"/>
+                                <accessibility key="accessibilityConfiguration" identifier="programmingTextField"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CM8-pt-otk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="WCP-mW-5yZ"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter programing langauge name to search for github repositories" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRg-6O-deo">
                                 <rect key="frame" x="80" y="128" width="254" height="64.5"/>
@@ -34,6 +38,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyq-Qg-bm2">
                                 <rect key="frame" x="132.5" y="787" width="149" height="50"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <accessibility key="accessibilityConfiguration" identifier="searchButton"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="cMV-A4-3aq"/>
                                 </constraints>
@@ -102,6 +107,9 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VAg-WX-iNl"/>
+                        <accessibility key="accessibilityConfiguration" identifier="RepoListViewController">
+                            <bool key="isElement" value="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="VAg-WX-iNl" firstAttribute="trailing" secondItem="1HL-d0-UDZ" secondAttribute="trailing" id="5tE-mG-STu"/>
                             <constraint firstItem="1HL-d0-UDZ" firstAttribute="top" secondItem="VAg-WX-iNl" secondAttribute="top" id="TJu-El-3Sq"/>
@@ -153,6 +161,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="pragrammingLangaugeTextField"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <userDefinedRuntimeAttributes>

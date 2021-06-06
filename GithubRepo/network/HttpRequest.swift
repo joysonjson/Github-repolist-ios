@@ -67,7 +67,12 @@ extension HttpRequest{
             return (true,error?.localizedDescription,nil)
 
         }else{
-            return (false,error?.localizedDescription,nil)
+            guard let data = responseData else {
+                return (false,error?.localizedDescription,nil)
+
+            }
+            let res = try? JSONDecoder().decode(ErrorResponse.self, from: data)
+            return (false,res?.errors?.first?.message,nil)
         }
     }
 }
