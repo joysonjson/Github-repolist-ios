@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0852BD53266BB5BE0005F490 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852BD52266BB5BE0005F490 /* SortOption.swift */; };
+		0852BD5B266BEE660005F490 /* ProgrammingLanguageValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0852BD5A266BEE660005F490 /* ProgrammingLanguageValidationTests.swift */; };
 		088ADD9B2668C66C008A8C84 /* RepoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */; };
 		088ADDA42668CD28008A8C84 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDA32668CD28008A8C84 /* RepoViewModel.swift */; };
 		088ADDAD2668CD78008A8C84 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088ADDAC2668CD78008A8C84 /* Repository.swift */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		0852BD52266BB5BE0005F490 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
+		0852BD5A266BEE660005F490 /* ProgrammingLanguageValidationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgrammingLanguageValidationTests.swift; sourceTree = "<group>"; };
 		088ADD9A2668C66C008A8C84 /* RepoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoListViewController.swift; sourceTree = "<group>"; };
 		088ADDA32668CD28008A8C84 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
 		088ADDAC2668CD78008A8C84 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				088E436B2668B1D400877C58 /* GithubRepoTests.swift */,
+				0852BD5A266BEE660005F490 /* ProgrammingLanguageValidationTests.swift */,
 				088E436D2668B1D400877C58 /* Info.plist */,
 			);
 			path = GithubRepoTests;
@@ -468,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0852BD5B266BEE660005F490 /* ProgrammingLanguageValidationTests.swift in Sources */,
 				088E436C2668B1D400877C58 /* GithubRepoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

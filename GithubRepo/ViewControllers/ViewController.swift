@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction func searchAction(_ sender: UIButton) {
-        let validation = ProgrammingLanguageValidation().Validate(langauge: self.programNameTextField.text)
+        let validation = ProgrammingLanguageValidation().validate(langauge: self.programNameTextField.text)
         if validation.success{
             guard let vc = storyboard?.instantiateViewController(identifier:  String(describing: RepoListViewController.self), creator: { coder in
                 return RepoListViewController(coder: coder, selectedLanguage: validation.value!)

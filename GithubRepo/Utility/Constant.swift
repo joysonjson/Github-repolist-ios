@@ -7,6 +7,7 @@
 
 import Foundation
 struct Constants {
-    public static let github_token = ""
+    public static let github_token = "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"
+    public static let emptyLanguageError = "Please enter a programing language"
 }
 
